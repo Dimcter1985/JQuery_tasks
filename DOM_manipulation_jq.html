@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <h2 class="title1">title</h2>
+    <h2 class="title1">title</h2>
+    2
+    <h2 class="title2">title</h2>
+    <h2 class="title2">title</h2>
+    3
+    <h2 class="title3">title</h2>
+    <h2 class="title3">title</h2>
+    4
+    <h2 class="title4">title</h2>
+    <h2 class="title4">title</h2>
+    5
+    <div class="wrap"><p class="txt1">werwerere</p></div>
+    <div class="wrap"><p class="txt1">werwerere</p></div>
+    <script>
+      //1 Оберните каждый <h2> в <div>
+      (function () {
+        $(".title1").wrap("<div></div>");
+      })();
+
+      //2 Оберните каждый <h2> в <div> c классом
+      (function () {
+        $(".title2").wrap("<div class='wrap'></div>");
+      })();
+
+      //3 Оберните каждый <h2> внутри в <i>.
+      (function () {
+        $(".title3").wrapInner("<i></i>");
+      })();
+
+      //4 Оберните все <h2> в один <i>.
+      (function () {
+        $(".title4").wrapAll("<i></i>");
+      })();
+
+      //5 Найдите абзацы <p>, обернутые дивами <div>, и удалите эти дивы.
+      (function () {
+        $(".wrap > .txt1").unwrap();
+      })();
+    </script>
+  </body>
+</html>
