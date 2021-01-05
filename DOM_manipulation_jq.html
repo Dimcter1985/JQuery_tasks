@@ -22,6 +22,35 @@
     5
     <div class="wrap"><p class="txt1">werwerere</p></div>
     <div class="wrap"><p class="txt1">werwerere</p></div>
+    6
+    <h2 class="title5">title</h2>
+    <h2 class="title5">title</h2>
+    7
+    <h2 class="title6">title</h2>
+    <h2 class="title6">title</h2>
+    8
+    <h2 class="title7">title</h2>
+    <h2 class="title7">title</h2>
+    9
+    <h2 class="title8">title</h2>
+    <h2 class="title8">title</h2>
+    10
+    <h2 class="title9">title</h2>
+    <h2 class="title9">title</h2>
+    11
+    <h2 class="title10">title</h2>
+    <h2 class="title10">title</h2>
+    12
+    <h2 class="title11">title</h2>
+    <h2 class="title11">title</h2>
+    14
+    <h2 class="title12">title</h2>
+    <h2 class="title12">title</h2>
+
+    15
+    <h2 class="title13">title</h2>
+    <h2 class="title13">title</h2>
+
     <script>
       //1 Оберните каждый <h2> в <div>
       (function () {
@@ -47,6 +76,45 @@
       (function () {
         $(".wrap > .txt1").unwrap();
       })();
+
+      //6 Перед каждым <h2> вставьте '<p>!</p>'.
+      (function () {
+        $(".title5").before("<p>!!!!!!!</p>");
+      })();
+
+      //7 После каждого <h2> вставьте '<p>?</p>'
+      (function () {
+        $(".title6").after("<p>???????</p>");
+      })();
+
+      //8 Сделайте первое и второе задание одновременно (цепочкой).
+      (function () {
+        $(".title7").before("<p>!!!!!!!</p>").after("<p>???????</p>");
+      })();
+
+      //9 Внутри каждого <h2> в начале вставьте '!'.
+      (function () {
+        $(".title8").prepend("!!!!!");
+      })();
+
+      //10 Внутри каждого <h2> в конце вставьте '?'.
+      (function () {
+        $(".title9").append("????");
+      })();
+
+      //11 Сделайте предыдущие два задания одновременно + окрасьте все <h2> в красный цвет.
+      (function () {
+        $(".title10").append("????").prepend("!!!!").css("color", "red");
+      })();
+
+      //12 каждый <h2> замените на его содержимое.
+      $(".title11").replaceWith("<h2>Заголовок</h2>");
+
+      //14 Удалите все <h2>.
+      $(".title12").remove();
+
+      //15 Сделайте все <h2> пустыми.
+      $(".title13").empty();
     </script>
   </body>
 </html>
