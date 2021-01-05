@@ -50,62 +50,129 @@
     15
     <h2 class="title13">title</h2>
     <h2 class="title13">title</h2>
+    16
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link"
+      >https://www.youtube.com/watch?v=ypam0O7FOv8</a
+    ><br />
+    17
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link2"
+      >https://www.youtube.com/watch?v=ypam0O7FOv8</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link2"
+      >https://translate.yandex.ru/</a
+    ><br />
+    18
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link3"
+      >https://www.youtube.com/watch?v=ypam0O7FOv8</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link3"
+      >https://translate.yandex.ru/</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link3"
+      >https://translate.yandex.ru/</a
+    ><br />
+    19
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link4"
+      >https://www.youtube.com/watch?v=ypam0O7FOv8</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link4"
+      >https://translate.yandex.ru/</a
+    ><br />
+    20
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link5"
+      >https://www.youtube.com/watch?v=ypam0O7FOv8</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link5"
+      >https://translate.yandex.ru/</a
+    ><br />
+    21
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link6"
+      >Ссылка1</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link6">Ссылка2</a><br />
+    22
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link7"
+      >Ссылка1</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link7">Ссылка2</a><br />
+    23
+    <a href="https://www.youtube.com/watch?v=ypam0O7FOv8" class="link8"
+      >Ссылка1</a
+    ><br />
+    <a href="https://translate.yandex.ru/" class="link8">Ссылка2</a><br />
+
+    24
+    <ul class="list">
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+    </ul>
+
+    25
+    <ul class="list2">
+      <li class="item2">item</li>
+      <li class="item2">item</li>
+      <li class="item2">item</li>
+    </ul>
+
+    26
+    <ul class="list2">
+      <li class="item3">item</li>
+      <li class="item3">item</li>
+      <li class="item3">item</li>
+    </ul>
+
+    27
+    <ul class="list2">
+      <li class="item4">item</li>
+      <li class="item4 active">item</li>
+      <li class="item4">item</li>
+    </ul>
+
+    28
+    <input type="text" class="in" value="это инпут" /><br /><br />
+
+    29
+    <textarea class="text">Это текстареа</textarea><br /><br />
+
+    30
+    <input type="text" class="in2" value="это инпут" /><br /><br />
+    <input type="text" class="in2" value="это второй инпут" /><br /><br />
+    <input type="text" class="in2" value="это третий инпут" /><br /><br />
 
     <script>
       //1 Оберните каждый <h2> в <div>
-      (function () {
-        $(".title1").wrap("<div></div>");
-      })();
+      $(".title1").wrap("<div></div>");
 
       //2 Оберните каждый <h2> в <div> c классом
-      (function () {
-        $(".title2").wrap("<div class='wrap'></div>");
-      })();
+      $(".title2").wrap("<div class='wrap'></div>");
 
       //3 Оберните каждый <h2> внутри в <i>.
-      (function () {
-        $(".title3").wrapInner("<i></i>");
-      })();
+      $(".title3").wrapInner("<i></i>");
 
       //4 Оберните все <h2> в один <i>.
-      (function () {
-        $(".title4").wrapAll("<i></i>");
-      })();
+      $(".title4").wrapAll("<i></i>");
 
       //5 Найдите абзацы <p>, обернутые дивами <div>, и удалите эти дивы.
-      (function () {
-        $(".wrap > .txt1").unwrap();
-      })();
+      $(".wrap > .txt1").unwrap();
 
       //6 Перед каждым <h2> вставьте '<p>!</p>'.
-      (function () {
-        $(".title5").before("<p>!!!!!!!</p>");
-      })();
+      $(".title5").before("<p>!!!!!!!</p>");
 
       //7 После каждого <h2> вставьте '<p>?</p>'
-      (function () {
-        $(".title6").after("<p>???????</p>");
-      })();
+      $(".title6").after("<p>???????</p>");
 
       //8 Сделайте первое и второе задание одновременно (цепочкой).
-      (function () {
-        $(".title7").before("<p>!!!!!!!</p>").after("<p>???????</p>");
-      })();
+      $(".title7").before("<p>!!!!!!!</p>").after("<p>???????</p>");
 
       //9 Внутри каждого <h2> в начале вставьте '!'.
-      (function () {
-        $(".title8").prepend("!!!!!");
-      })();
+      $(".title8").prepend("!!!!!");
 
       //10 Внутри каждого <h2> в конце вставьте '?'.
-      (function () {
-        $(".title9").append("????");
-      })();
+      $(".title9").append("????");
 
       //11 Сделайте предыдущие два задания одновременно + окрасьте все <h2> в красный цвет.
-      (function () {
-        $(".title10").append("????").prepend("!!!!").css("color", "red");
-      })();
+      $(".title10").append("????").prepend("!!!!").css("color", "red");
 
       //12 каждый <h2> замените на его содержимое.
       $(".title11").replaceWith("<h2>Заголовок</h2>");
@@ -115,6 +182,64 @@
 
       //15 Сделайте все <h2> пустыми.
       $(".title13").empty();
+
+      //16 Получите атрибут href ссылки из класса www.
+      console.log($(".link").attr("href"));
+
+      //17 Получите атрибут href первой ссылки.
+      console.log($(".link2:first").attr("href"));
+
+      //18 Получите атрибут href всех ссылок и последовательно выведите алертом.
+      $(".link3").attr("href", function (ind, el) {
+        console.log(el);
+      });
+
+      //19 Замените href каждой ссылки на '!'.
+      let $link = $(".link4").attr("href", "!!!!!!!");
+      $link.each((ind, el) => {
+        console.log($(el).attr("href"));
+      });
+
+      //20  Добавьте каждой ссылке атрибут target='_blank'.
+      $(".link5").attr("target", "_blank");
+
+      //21 Замените содержимое каждой ссылки (анкоры) на их href
+      $(".link6").each(function () {
+        $(this).html($(this).attr("href"));
+      });
+
+      //22 Вставьте после содержимого каждой ссылки их href в круглых скобках.
+      $(".link7").each(function () {
+        $(this).append(`(${$(this).attr("href")})`);
+      });
+
+      //23 Вставьте в атрибут title каждой ссылки ее анкор
+      $(".link8").each(function () {
+        $(this).attr("title", `(${$(this).html()})`);
+      });
+
+      //24 Добавьте всем li класс test.
+      $(".list > li").addClass("test");
+
+      //25 Удалите у li класс
+      $(".item2").removeClass();
+
+      //26 Добавьте всем li класс www, если его нет, и удалите, если есть
+      $(".item3").toggleClass("item3");
+
+      //27 Проверьте, что хотя бы одна из ссылок имеет класс
+      if ($(".item4").hasClass("active")) console.log("имеет");
+
+      //28 Выведите value инпута с классом in.
+      console.log($(".in").val());
+
+      //29 Выведите содержимое textarea с классом text.
+      console.log($(".text").val());
+
+      //30 Выведите последовательно value каждого инпута
+      $(".in2").each(function () {
+        console.log($(this).val());
+      });
     </script>
   </body>
 </html>
