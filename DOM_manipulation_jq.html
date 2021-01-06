@@ -136,9 +136,65 @@
     <textarea class="text">Это текстареа</textarea><br /><br />
 
     30
-    <input type="text" class="in2" value="это инпут" /><br /><br />
-    <input type="text" class="in2" value="это второй инпут" /><br /><br />
-    <input type="text" class="in2" value="это третий инпут" /><br /><br />
+    <input type="text" class="number" value="это инпут" /><br /><br />
+    <input type="text" class="number" value="это второй инпут" /><br /><br />
+    <input type="text" class="number" value="это третий инпут" /><br /><br />
+
+    31
+    <input type="text" class="in3" value="это инпут" /><br /><br />
+
+    32
+    <input type="text" class="in4" value="2" /><br /><br />
+    <input type="text" class="in4" value="4" /><br /><br />
+    <input type="text" class="in4" value="6" /><br /><br />
+
+    33
+    <input type="checkbox" class="check1" checked />
+    <input type="checkbox" class="check1" checked /><br /><br />
+
+    34
+    <input type="checkbox" class="check2" />
+    <input type="checkbox" class="check2" /><br /><br />
+
+    35
+    <input type="checkbox" class="check3" checked />
+    <input type="checkbox" class="check3" /><br /><br />
+
+    36
+    <input type="checkbox" class="check4" checked />
+    <input type="checkbox" class="check4" checked /><br /><br />
+
+    37
+    <div
+      class="wrapper"
+      style="
+        width: 150px;
+        height: 50px;
+        border: 2px solid black;
+        padding: 10px;
+        margin: 10px;
+      "
+    ></div>
+    <div
+      class="wrapper"
+      style="
+        width: 100px;
+        height: 50px;
+        border: 2px solid black;
+        padding: 10px;
+        margin: 10px;
+      "
+    ></div>
+    <div
+      class="wrapper"
+      style="
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        padding: 10px;
+        margin: 10px;
+      "
+    ></div>
 
     <script>
       //1 Оберните каждый <h2> в <div>
@@ -239,6 +295,53 @@
       //30 Выведите последовательно value каждого инпута
       $(".in2").each(function () {
         console.log($(this).val());
+      });
+
+      //31 Установите value всех инпутов в '!'.
+      $(".in3").val("!!!!!!");
+
+      //32 В value всех инпутов с классом in4 находятся числа. Сделайте так, чтобы в них стали квадраты этих чисел
+      $(".in4").each(function () {
+        let val = $(this).val();
+        $(this).val(Math.pow(val, 2));
+      });
+
+      //33 Установите все отмеченные чекбоксы в неотмеченные.
+      $(".check1").prop("checked", false);
+
+      //34 Установите все неотмеченные чекбоксы в отмеченные.
+      $(".check2").prop("checked", true);
+
+      //35  Установите все отмеченные чекбоксы в неотмеченные и наоборот.
+      $(".check3").each(function () {
+        $(this).prop("checked", !$(this).prop("checked"));
+      });
+
+      //36 Сделайте неотмеченным последний чекбокс на странице.
+      $(".check4:last").prop("checked", false);
+
+      //37 Узнайте ширину и высоту первого, второго и третьего дивов <div> (по очереди) непосредственно внутри #wrapper без учета padding и границы.
+      $(".wrapper").each(function () {
+        console.log($(this).width());
+        console.log($(this).height());
+      });
+
+      //38 То же самое с учетом padding.
+      $(".wrapper").each(function () {
+        console.log($(this).innerWidth());
+        console.log($(this).innerHeight());
+      });
+
+      //39 То же самое с учетом padding и границы.
+      $(".wrapper").each(function () {
+        console.log($(this).outerWidth());
+        console.log($(this).outerHeight());
+      });
+
+      //40 о же самое с учетом padding, границы и margin.
+      $(".wrapper").each(function () {
+        console.log($(this).outerWidth(true));
+        console.log($(this).outerHeight(true));
       });
     </script>
   </body>
