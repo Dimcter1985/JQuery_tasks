@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <ul class="list">
+      <li class="item">item</li>
+      <li class="item test">item</li>
+      <li class="item">item</li>
+    </ul>
+    2
+    <ul class="list">
+      <li class="item2">item1</li>
+      <li class="item2">item2</li>
+      <li class="item2">item3</li>
+    </ul>
+    3
+    <ul class="list">
+      <li class="item3">item1</li>
+      <li class="item3">item2</li>
+      <li class="item3">item3</li>
+    </ul>
+    4
+    <ul class="list">
+      <li class="item4">item1</li>
+      <li class="item4">item2</li>
+      <li class="item4">item3</li>
+      <li class="item4">item4</li>
+      <li class="item4">item5</li>
+    </ul>
+    5
+    <ul class="list">
+      <li class="item5">item1</li>
+      <li class="item5">item2</li>
+      <li class="item5">item3</li>
+      <li class="item5">item4</li>
+    </ul>
+    6
+    <ul class="list">
+      <li class="item6">item1</li>
+      <li class="item6">item2</li>
+      <li class="item6">item3</li>
+      <li class="item6">item4</li>
+      <li class="item6">item5</li>
+    </ul>
+    7
+    <ul class="list">
+      <li class="item7 www">item1</li>
+      <li class="item7">item2</li>
+      <li class="item7">item3</li>
+      <li class="item7 www">item4</li>
+      <li class="item7">item5</li>
+    </ul>
+    8
+    <div class="el">element1</div>
+    <div class="el test1">element2</div>
+    <div class="el">element3</div>
+    <div class="el">element4</div>
+    <script>
+      //1 Найдите все <li>, исключив из набора <li> с классом test.
+      $(".item")
+        .not(".test")
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //2 Найдите первый <li> в наборе.
+      console.log($(".item2").first().html());
+
+      //3 Найдите последний <li> в наборе.
+      console.log($(".item3").last().html());
+
+      //4 Найдите четвертый <li> в наборе.
+      console.log($(".item4").eq(3).html());
+
+      //5  Найдите предпоследний <li> в наборе.
+      console.log($(".item5").eq(-2).html());
+
+      //6  Найдите с 3-го по 10-тый <li> в наборе.
+      $(".item6")
+        .slice(1, 3)
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //7 Найдите все <li> затем с помощью filter выберите все li с классом .www.
+      $(".item7")
+        .filter(".www")
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //8 Найдите первый элемент, который стоит непосредственно за элементом с классом test1.
+      console.log($(".test1").next().html());
+    </script>
+  </body>
+</html>
