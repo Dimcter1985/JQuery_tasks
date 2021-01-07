@@ -61,6 +61,93 @@
     <div class="el test1">element2</div>
     <div class="el">element3</div>
     <div class="el">element4</div>
+    9
+    <div class="el1">element1</div>
+    <div class="el1 www1">element2</div>
+    <div class="el1">element3</div>
+    <div class="el1 test2">element4</div>
+    <div class="el1">element4</div>
+    10
+    <div class="parent">
+      <div class="el2">element1</div>
+      <div class="el2 www2">element2</div>
+      <div class="el2">element3</div>
+      <div class="el2 test3">element4</div>
+      <div class="el2 test3">element5</div>
+    </div>
+
+    11
+    <div class="parent">
+      <div class="test4"></div>
+    </div>
+
+    12
+    <span class="txt">WWWWW <b class="txt__bold">eeeeeeeeeee</b></span>
+    <span class="txt">WWWWW <b class="txt__bold">eeeeeeeeeee</b></span>
+    <span class="txt">WWWWW <b class="txt__bold">eeeeeeeeeee</b></span
+    ><br /><br />
+
+    13
+    <div>
+      parent
+      <span class="txt">WWWWW <b class="txt__bold2">eeeeeeeeeee</b></span>
+      <span class="txt">WWWWW <b class="txt__bold2">eeeeeeeeeee</b></span>
+      <span class="txt">WWWWW <b class="txt__bold2">eeeeeeeeeee</b></span>
+    </div>
+
+    14
+    <div class="parent2">
+      <h2 class="title">title</h2>
+      <h2 class="title test5" id="3">title</h2>
+      <h2 class="title">title</h2>
+      <h2 class="title">title</h2>
+      <h2 class="title test5">title</h2>
+    </div>
+
+    15
+    <div class="parent3">
+      <p class="txt2">some text</p>
+      <p class="txt2">some text</p>
+      <p class="txt2">some text</p>
+    </div>
+
+    16
+    <div class="parent4">
+      <div class="txt3">some text</div>
+      <div class="txt3">some text</div>
+      <div class="txt3">some text</div>
+    </div>
+
+    17
+    <h2 class="title2 test6"></h2>
+    <h2 class="title2"></h2>
+    <h2 class="title2"></h2>
+    <h2 class="title2"></h2>
+
+    18
+    <div class="parent5">
+      <h2 class="title3">title</h2>
+      <p class="txt4">some text</p>
+      <div class="small">small text</div>
+      <h2 class="title3">title</h2>
+      <p class="txt4">some text</p>
+      <div class="small">small text</div>
+      <h2 class="title3">title</h2>
+      <p class="txt4">some text</p>
+      <div class="small">small text</div>
+    </div>
+    <br />
+
+    19
+    <div class="parent6">
+      <h2 class="title4">title</h2>
+      <p class="txt5">some text</p>
+      <h2 class="title4">title</h2>
+      <a href="">sdfsfs</a>
+      <h2 class="title4">title</h2>
+      <a href="">sdfsfs</a>
+    </div>
+
     <script>
       //1 Найдите все <li>, исключив из набора <li> с классом test.
       $(".item")
@@ -97,6 +184,89 @@
 
       //8 Найдите первый элемент, который стоит непосредственно за элементом с классом test1.
       console.log($(".test1").next().html());
+
+      //9 Найдите первый элемент, который стоит непосредственно перед элементом с классом test.
+      console.log($(".test1").prev().html());
+
+      //10  Найдите все элементы, которые идут непосредственно за элементом с классом test.
+      console.log($(".test1").nextAll());
+
+      //11  Найдите все элементы, которые идут непосредственно перед элементом с классом test. Показать решение.
+      console.log($(".test1").prevAll());
+
+      //12 Найдите все элементы, которые лежат между элементом с классом www и элементом с классом test через nextUntil.
+      $(".www1")
+        .nextUntil(".test2")
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //13 Найдите все элементы, которые лежат между элементом с классом test и элементом с классом www через prevUntil.
+      $(".test2")
+        .prevUntil(".www1")
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //14 Найдите всех соседей <li> с классом www.
+      $(".www2")
+        .siblings()
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //15 Найдите всех соседей <li> с классом www, которые (соседи) имеют класс test.
+      $(".www2")
+        .siblings(".test3")
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //16 Найдите всех соседей <li> с классом www, но не соседа с классом test.
+      $(".www2")
+        .siblings(":not('.test3')")
+        .each(function () {
+          console.log($(this).html());
+        });
+
+      //17 Найдите родителя элемента с классом test.
+      console.log($(".test4").parent().html());
+
+      //18 Найдите родителей всех тегов <b> и сделайте их красным цветом.
+      $(".txt__bold").parent().css("color", "red");
+
+      //19 Найдите ближайших дивов-родителей всех тегов <b> и сделайте их красным цветом.
+      $(".txt__bold2").closest("div").css("color", "red");
+
+      //20 Найдите все <h2> с классом .www, сделайте их красного цвета, затем среди найденных элементов найдите элементы с классом .test и поставьте им размер шрифта в 30px.
+      $(".parent2").css("color", "red").find(".test5").css("font-size", "30px");
+
+      //21 Найдите все элементы с классом .www, сделайте их красного цвета, затем среди найденных элементов найдите абзацы и поставьте им в конец текст '!'.
+      $(".parent3").css("color", "red").find(".txt2").append("!!!!!!");
+
+      //22 Найдите все абзацы <p> с классом .www, поставьте им в начало текст '!', а в конец текст '!!', затем добавьте к этим абзацам еще и заголовки <h2> и покрасьте эти абзацы и заголовки в красный цвет.
+      // $(".txt3").prepend("!!!!").append("????").add("h2").css("color", "red");
+
+      //23 Найдите все <h2>, проверьте, что среди найденных есть <h2> с классом test.
+      console.log($(".title2").is(".test6"));
+
+      //24 Найдите все элементы непосредственно стоящие после заголовков. Если найденный элемент - абзац, добавьте ему в конец содержимое заголовка над ним.
+      $(".title3")
+        .next()
+        .each(function () {
+          if ($(this).is("p")) {
+            $(this).append($(".title3").html());
+          }
+        });
+
+      //25 Найдите все элементы непосредственно стоящие после заголовков. Если найденный элемент - не абзац, вставьте под заголовком абзац с таким же содержимым, как и заголовок.
+      $(".title4")
+        .next()
+        .each(function () {
+          if (!$(this).is("p")) {
+            $(this).before(`<p>${$(".title4").html()}</p>`);
+          }
+        });
     </script>
   </body>
 </html>
