@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <div class="parent">
+      <button class="btn">свернуть</button>
+      <button class="btn">развернуть</button>
+      <ol class="list">
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+        <li class="item">пункт списка</li>
+      </ol>
+    </div>
+    2
+    <div class="parent">
+      <button class="btn2">свернуть</button>
+      <ol class="list2">
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+        <li class="item2">пункт списка</li>
+      </ol>
+    </div>
+    3
+    <div class="parent">
+      <button class="btn3">исчезнуть</button>
+      <button class="btn3">появится</button>
+      <button class="btn3">затемнить</button>
+      <button class="btn3">оттемнить</button>
+      <ol class="list3">
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+        <li class="item3">пункт списка</li>
+      </ol>
+    </div>
+
+    <style>
+      .btn,
+      .btn2,
+      .btn3 {
+        border: none;
+        background: none;
+        outline: none;
+        color: blue;
+      }
+
+      .btn:hover,
+      .btn2:hover,
+      .btn3:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .list,
+      .list2,
+      .list3 {
+        width: 130px;
+        border: 1px solid green;
+        padding: 20px;
+        list-style: inside;
+      }
+    </style>
+
+    <script>
+      //1
+      $(".btn:eq('0')").on("click", function () {
+        $(".list").slideUp(1000);
+      });
+      $(".btn:eq('1')").on("click", function () {
+        $(".list").slideDown(1000);
+      });
+
+      //2
+      $(".btn2").on("click", function () {
+        $(".list2").slideToggle(1000);
+      });
+
+      //3
+      $(".btn3:eq('0')").on("click", function () {
+        $(".list3").fadeOut(1000);
+      });
+      $(".btn3:eq('1')").on("click", function () {
+        $(".list3").fadeIn(1000);
+      });
+      $(".btn3:eq('2')").on("click", function () {
+        $(".list3").fadeTo(500, 0.3);
+      });
+      $(".btn3:eq('3')").on("click", function () {
+        $(".list3").fadeTo(500, 1);
+      });
+    </script>
+  </body>
+</html>
