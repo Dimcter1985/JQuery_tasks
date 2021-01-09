@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <div class="parent">
+      <p class="txt">some text1</p>
+      <p class="txt">some text2</p>
+      <p class="txt">some text3</p>
+    </div>
+
+    2
+    <div class="parent2">
+      <a class="link" href="#">some link1</a>
+      <br />
+      <a class="link" href="#">some link2</a>
+      <br />
+      <a class="link" href="#">some link3</a>
+      <br />
+    </div>
+
+    3
+    <div class="parent3">
+      <a class="link2" href="#">some link1</a>
+      <br />
+      <a class="link2" href="#">some link2</a>
+      <br />
+      <a class="link2" href="#">some link3</a>
+      <br />
+    </div>
+
+    4
+    <div class="parent3">
+      <input type="text" class="inp" />
+      <br />
+      <input type="text" class="inp" />
+      <br />
+      <input type="text" class="inp" />
+      <br />
+      <p id="test"></p>
+    </div>
+
+    5
+    <div class="parent4">
+      <input type="text" class="inp2" value="Lera" />
+      <br />
+      <input type="text" class="inp2" value="Baba" />
+      <br />
+      <input type="text" class="inp2" value="Dazdranagon" />
+      <br />
+    </div>
+
+    6
+    <div class="paren5">
+      <p class="txt2">2</p>
+      <p class="txt2">4</p>
+      <p class="txt2">6</p>
+    </div>
+
+    7
+    <div class="parent6">
+      <ul class="list">
+        <li class="item">item</li>
+        <li class="item">item</li>
+        <li class="item">item</li>
+      </ul>
+      <button class="btn">add</button>
+    </div>
+
+    8
+    <div class="parent7">
+      <table class="tbl">
+        <tr>
+          <th>Имя</th>
+          <th>Фамилия</th>
+        </tr>
+        <tr>
+          <td>Иван</td>
+          <td>Иванов</td>
+        </tr>
+      </table>
+      <input
+        type="text"
+        name="name"
+        class="inp3"
+        placeholder="введи имя"
+      /><br />
+      <input
+        type="text"
+        name="lastname"
+        class="inp3"
+        placeholder="введи фамилию"
+      />
+      <br />
+      <input type="button" value="добавить" class="btn2" />
+    </div>
+
+    <script>
+      //1 Даны абзацы. Сделайте так, чтобы по клику на каждый абзац на экран выводилось его содержимое.
+      $(".txt").on("click", function () {
+        console.log($(this).text());
+      });
+
+      //2 Привяжите всем ссылкам событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках.
+      $(".link").on("mouseover", function () {
+        $(this).append(`(${$(this).attr("href")})`);
+      });
+
+      //3 Дополнить предыдущую задачу: после первого наведению на ссылку следует отвязать от нее событие, которое добавляет href в конец текста.
+      $(".link2").on("mouseover", function func() {
+        $(this).append(`(${$(this).attr("href")})`);
+        $(this).off("mouseover", func);
+      });
+
+      //4 Привяжите всем инпутам событие - по потери фокуса каждый инпут выводит свое value в абзац с id="test".
+      $(".inp").on("blur", function () {
+        $("#test").append(`${$(this).val()}, `);
+      });
+
+      //5 Для всех инпутов сделайте так, чтобы они выводили свой value алертом при нажатии на любой из них, но только по первому нажатию. Повторное нажатие на инпут не должно вызывать реакции.
+      $(".inp2").one("click", function () {
+        alert($(this).val());
+      });
+
+      //6 Даны абзацы с числами. По нажатию на абзац в нем должен появится квадрат числа, которое он содержит.
+      $(".txt2").one("click", function () {
+        let num = $(this).text();
+        $(this).text(num * num);
+      });
+
+      //7  Даны абзацы с числами. По клику на абзац в нем должен появится квадрат числа, которое он содержит, но только по первому клику. По двойному клику на абзац число в абзаце должно удвоится, но тоже только первый раз.
+      $(".txt2").one("click dblclick", function () {
+        let num = $(this).text();
+        $(this).text(num * num);
+      });
+
+      //8 Дан ul, в нем несколько li. Под ul сделайте кнопку, по нажатию на которую в конец ul будет добавляться новый li с текстом 'пункт'. Сделайте так, чтобы при клике на каждый li, ему в конец добавлялся '!'. Это должно работать и для вновь добавленных li. Задачу решите с помощью делегирования (то есть событие должно быть навешано на ul).
+      const $list = $(".list");
+      $(".btn").on("click", function () {
+        $list.append("<li class='item'>new item</li>");
+      });
+      $list.on("click", ".item", function () {
+        $(this).append("!!!");
+      });
+
+      //9 Дана таблица с юзерами с двумя колонками: имя и фамилия. Под таблицей сделайте форму, с помощью которой можно будет добавить нового юзера в таблицу. Сделайте так, чтобы при клике на любую ячейку появлялся prompt, с помощью которого можно изменить текст ячейки. Задачу решите с помощью делегирования (то есть событие должно быть навешано на table).
+      const tbl = $(".tbl");
+      $(".btn2").on("click", function () {
+        tbl.append(
+          `<tr><td>${$(".inp3:eq('0')").val()}</td><td>${$(
+            ".inp3:eq('1')"
+          ).val()}</td></tr>`
+        );
+      });
+      tbl.on("click", "td", function () {
+        $(this).text(prompt());
+      });
+    </script>
+  </body>
+</html>
