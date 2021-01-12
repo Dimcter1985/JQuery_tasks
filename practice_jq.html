@@ -43,6 +43,35 @@
       <p class="txt3"></p>
     </div>
 
+    8
+    <div class="parent">
+      <p class="txt4"></p>
+      <span class="txt4"></span>
+      <span class="txt4" id="test3">some text</span>
+      <span class="txt4"></span>
+    </div>
+
+    9
+    <div class="parent">
+      <ul class="list">
+        <li class="item">some item</li>
+        <li class="item">some item</li>
+        <li class="item">some item</li>
+        <li class="item">some item</li>
+      </ul>
+    </div>
+
+    10
+    <div class="parent">
+      <p></p>
+      <ul class="list2">
+        <li class="item2">some item</li>
+        <li class="item2">some item</li>
+        <li class="item2">some item</li>
+        <li class="item2">some item</li>
+      </ul>
+    </div>
+
     <script>
       //1 Все абзацы <p>, внутри которых есть <b>, оберните в тег <div></div>
       $(".txt:has('b')").wrap("<div></div>");
@@ -72,6 +101,20 @@
       let el = $("#test2");
       let txt = $("#test2").text();
       el.prevAll().text(`${txt}`).nextAll().text(`${txt}`);
+
+      //8 Дан элемент #test. Найдите среди его соседей сверху ближайший абзац и поставьте ему текст элемента #test.
+      let el2 = $("#test3");
+      let txt2 = el2.text();
+      el2.prevAll("p").text(`${txt2}`);
+
+      //9 Найдите второй <li> на странице, добавьте ему класс .www, оберните его внутри тегом <i>, вставьте после него <li> с текстом 'привет'.
+      $(".item:eq('1')")
+        .addClass(".www")
+        .wrapInner("<i></i>")
+        .append("<li>привет</li>");
+
+      ///10 Найдите четвертый <li> , найдите его родителя, получите непосредственного соседа родителя сверху, оберните его в <div class="www">
+      $(".item2:eq('3')").parent().prev().wrap("<div class='www'></div>");
     </script>
   </body>
 </html>
