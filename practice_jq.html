@@ -146,10 +146,101 @@
     20
     <div class="parent3">
       <h2 class="title3">some title</h2>
-      <p class="txt13">come texr</p>
-      <p class="txt13">come texr</p>
-      <p class="txt13">come texr</p>
+      <p class="txt13">some texr</p>
+      <p class="txt13">some texr</p>
+      <p class="txt13">some texr</p>
       <h2 class="title3">some title</h2>
+    </div>
+
+    21
+    <div class="parent3">
+      <p class="txt14">some texr</p>
+      <p class="txt14 www1">some texr</p>
+      <p class="txt14 www1">some texr</p>
+    </div>
+
+    22
+    <div class="parent4">
+      <p class="www2">some texr</p>
+      <p class="www2">some texr</p>
+      <p class="www2">some texr</p>
+    </div>
+
+    23
+    <div class="parent4">
+      <p class="txt15">some texr</p>
+      <p class="txt15">some texr</p>
+      <p class="txt15">some texr</p>
+    </div>
+
+    24
+    <div class="parent4">
+      <p class="txt16">some texr</p>
+      <p class="txt16">some texr</p>
+      <p class="txt16">some texr</p>
+    </div>
+
+    25
+    <div class="parent4">
+      <p class="txt17">1</p>
+      <p class="txt17">2</p>
+      <p class="txt17">3</p>
+    </div>
+
+    26
+    <div class="parent4">
+      <h2 class="title3">some title</h2>
+      <p class="txt18">some text</p>
+      <h2 class="title3">some title</h2>
+    </div>
+
+    27
+    <div class="parent4">
+      <h2 class="title3">some title</h2>
+      <p class="txt19">some text</p>
+      <p class="txt19">some text</p>
+      <p class="txt19">some text</p>
+      <p class="txt19">some text</p>
+    </div>
+
+    28
+    <div class="parent4">
+      <p class="txt20 www3">some text</p>
+      <p class="txt20">some text</p>
+      <p class="txt20">some text</p>
+      <p class="txt20 www3">some text</p>
+    </div>
+
+    29
+    <div class="parent4">
+      <p class="txt21">some text1</p>
+      <p class="txt21">some text2</p>
+      <p class="txt21">some text3</p>
+      <p class="txt21">some text4</p>
+    </div>
+
+    30
+    <div class="parent4">
+      <p class="txt22">some text1</p>
+      <p class="txt22">some text2</p>
+      <h5 class="txt22">some text3</h5>
+      <p class="txt22">some text4</p>
+    </div>
+
+    31
+    <div class="parent4">
+      <p class="txt23">some text1</p>
+      <p class="txt23">some text2</p>
+      <h5 class="txt32"><b>some text3</b></h5>
+      <p class="txt23">some text4</p>
+    </div>
+
+    32
+    <div class="parent4">
+      <p class="txt24">some text1</p>
+      <p class="txt24">some text2</p>
+      <h5 class="txt32"><b>some text3</b></h5>
+      <p class="txt24">some text4</p>
     </div>
 
     <script>
@@ -245,6 +336,68 @@
 
       //20 Дан элемент <div>. Выберите из него всех непосредственных потомков, которые не являются заголовками и покрасьте их в красный цвет
       $(".parent3 > *").not("h2").css("color", "red");
+
+      //21 Найдите все абзацы <p>, покрасьте их в красный цвет. Затем выберите среди найденных абзацев абзацы с классом .www и поставьте им текст '!'.
+      $(".txt14").css("color", "red").filter(".www1").text("!!!!!!!!");
+
+      //22 Найдите все абзацы <p> с классом .www2, покрасьте их в красный цвет. Затем выберите среди найденных абзацев первый и поставьте ему текст '!', затем выберите последний и ему поставьте текст '?'. Решите задачу одной цепочкой.
+      $(".www2")
+        .css("color", "red")
+        .first()
+        .text("!!!!!!!!!")
+        .end()
+        .last()
+        .text("????????");
+
+      //23 Найдите все абзацы <p>, поставьте каждому из них в конец тот же текст, который стоит внутри него (то есть текст в абзаце станет написан два раза).
+      $(".txt15").append(function (index, text) {
+        return text;
+      });
+
+      //24 Найдите все абзацы <p>, поставьте каждому из них в конец его порядковый номер в наборе.
+      $(".txt16").append(function (index, text) {
+        return index;
+      });
+
+      //25 Даны абзацы с числами. Поставьте каждому из них в конец число, которое в нем хранится, умноженное на его порядковый номер в наборе.
+      $(".txt17").append(function (index, text) {
+        return text * index;
+      });
+
+      //26 По нажатию на абзац <p> удалите его непосредственных соседей сверху и с низу.
+      $(".txt18").on("click", function () {
+        $(this).siblings().remove();
+      });
+
+      //27 По нажатию на абзац <p> удалите всех его соседей сверху до первого заголовка h1-h6 (то есть элементы, стоящие выше этого заголовка и сам заголовок удалять не надо).
+      $(".txt19").on("click", function () {
+        $(this).prevUntil("h2").remove();
+      });
+
+      //28  По нажатию на абзац <p> удалите его ближайшего нижнего соседа с классом .www.
+      $(".txt20").on("click", function () {
+        $(this).nextAll(".www3").first().remove();
+      });
+
+      //29 По нажатию на абзац <p> удалите его третьего соседа снизу.
+      $(".txt21").on("click", function () {
+        $(this).nextAll(".txt21:eq('1')").remove();
+      });
+
+      //30 По нажатию на абзац <p> удалите его третьего соседа снизу, если это не <h5>
+      $(".txt22").on("click", function () {
+        $(this).nextAll().eq(1).not("h5").remove();
+      });
+
+      //31 По нажатию на абзац <p> удалите его пятого соседа снизу, если этот сосед не имеет внутри себя тега <b>.
+      $(".txt23").on("click", function () {
+        $(this).nextAll().eq(1).not(":has(b)").remove();
+      });
+
+      //32 По нажатию на абзац <p> удалите его пятого соседа снизу, если этот сосед не стоит непосредственно после <h2>.
+      $(".txt24").on("click", function () {
+        $(this).nextAll().eq(1).not("h5").next().remove();
+      });
     </script>
   </body>
 </html>
