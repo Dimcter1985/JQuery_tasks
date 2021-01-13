@@ -6,5 +6,107 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    33
+    <p id="test">first</p>
+    <p id="test2">second</p>
+
+    34
+    <p class="txt">first</p>
+    <p>second</p>
+
+    35
+    <p class="txt1">first</p>
+    <p>second</p>
+    <p>second</p>
+    <p class="www">second</p>
+    <p>second</p>
+
+    36
+    <div class="parent">
+      <h2 class="title">title</h2>
+      <p>second</p>
+      <p>second</p>
+      <span>span</span>
+      <p>second</p>
+      <h2 class="title">title</h2>
+      <p>second</p>
+    </div>
+
+    37
+    <p class="txt2">some text</p>
+    <p class="txt2">some text</p>
+
+    38
+    <div>
+      <p class="txt3">some text</p>
+    </div>
+    <span>
+      <p class="txt3">some text</p>
+    </span>
+
+    39
+    <div>
+      <p class="txt4">some text</p>
+    </div>
+    <span>
+      <p class="txt4">some text</p>
+    </span>
+
+    40
+    <div class="parent">
+      <ul class="list">
+        <li class="item"></li>
+      </ul>
+    </div>
+
+    <script>
+      //33  Дан элемент . Поменяйте этот элемент местами с его непосредственным соседом снизу.
+      const $elem = $("#test");
+      $elem.insertAfter($elem.next());
+
+      //34 Дан элемент . После его непосредственного соседа снизу вставьте копию нашего элемента.
+      const $elem2 = $(".txt");
+      $elem2.clone().insertAfter($elem2.next());
+
+      //35 Дан элемент. Поменяйте этот элемент местами с его ближайшим соседом снизу с классом .www.
+      const $elem3 = $(".txt1");
+      $elem3.insertAfter($elem3.nextAll(".www"));
+
+      //36 Найдите все абзацы <p>, которые внутри одного родителя лежат между одним и другим <h2>
+      $("h2")
+        .nextUntil("h2")
+        .next()
+        .prevUntil("h2")
+        .filter("p")
+        .css("color", "red");
+
+      //37 Оберните каждый абзац <p> снаружи и внутри в <div>.
+      $(".txt2").wrapInner("<div></div>").wrap("<div></div>");
+
+      //38 Найдите все абзацы <p>, у которых непосредственный родитель не <div> и оберните каждый из них в <div class="www">.
+      $(".txt3").parent().not("div").children("p").wrap("<div></div>");
+
+      //39 Найдите все абзацы <p>. Удалите их родителя (сделайте ему unwrap), если этот родитель не <div> с классом .www. Затем для те абзацы, у которых был удален родитель, оберните в <div> с классом .zzz.
+      $(".txt4")
+        .parent()
+        .not("div.www")
+        .children("p")
+        .unwrap()
+        .wrap("<div class='zzz'></div>");
+
+      //40 Найдите всех родителей элемента #test и создайте массив из CSS классов этих родителей.
+      let arr = [];
+      $(".item")
+        .parents()
+        .each(function () {
+          let classes = $(this).attr("class");
+          if (classes) {
+            arr = arr.concat(classes.split(" "));
+          }
+        });
+
+      console.log(arr);
+    </script>
+  </body>
 </html>
