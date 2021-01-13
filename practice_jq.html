@@ -72,6 +72,36 @@
       </ul>
     </div>
 
+    11
+    <div class="parent2">
+      <p class="txt5">some text</p>
+      <p class="txt5">some text</p>
+      <p class="txt5" id="test4">some text</p>
+      <p class="txt5">some text</p>
+    </div>
+
+    12
+    <div class="parent2">
+      <p class="txt6">some text</p>
+      <p class="txt6">some text</p>
+    </div>
+
+    13
+    <div class="parent2">
+      <h2 class="title">some title</h2>
+      <p class="txt7">some text</p>
+      <h2 class="title">some title</h2>
+      <p class="txt7">some text</p>
+    </div>
+
+    14
+    <div class="parent2">
+      <h2 class="title2">some title</h2>
+      <p class="txt8">some text</p>
+      <h2 class="title2">some title</h2>
+      <p class="txt8"></p>
+    </div>
+
     <script>
       //1 Все абзацы <p>, внутри которых есть <b>, оберните в тег <div></div>
       $(".txt:has('b')").wrap("<div></div>");
@@ -98,14 +128,14 @@
       $("#test").prev().text("!!!!!!").end().next().text("?????");
 
       //7 Дан элемент #test. Поставьте его непосредственным соседям сверху и снизу текст элемента #test.
-      let el = $("#test2");
+      let $el = $("#test2");
       let txt = $("#test2").text();
-      el.prevAll().text(`${txt}`).nextAll().text(`${txt}`);
+      $el.prevAll().text(`${txt}`).nextAll().text(`${txt}`);
 
       //8 Дан элемент #test. Найдите среди его соседей сверху ближайший абзац и поставьте ему текст элемента #test.
-      let el2 = $("#test3");
-      let txt2 = el2.text();
-      el2.prevAll("p").text(`${txt2}`);
+      let $el2 = $("#test3");
+      let txt2 = $el2.text();
+      $el2.prevAll("p").text(`${txt2}`);
 
       //9 Найдите второй <li> на странице, добавьте ему класс .www, оберните его внутри тегом <i>, вставьте после него <li> с текстом 'привет'.
       $(".item:eq('1')")
@@ -115,6 +145,27 @@
 
       ///10 Найдите четвертый <li> , найдите его родителя, получите непосредственного соседа родителя сверху, оберните его в <div class="www">
       $(".item2:eq('3')").parent().prev().wrap("<div class='www'></div>");
+
+      //11 Каждому абзацу <p>, кроме абзацев с классом #test4, добавьте к конец его порядковый номер.
+      $(".txt5:not('#test4')").each((ind, el) => el.append(ind));
+
+      //12 Найдите все абзацы <p> и поставьте перед каждым абзацем его копию. Копию покрасьте в красный цвет, а исходный абзац в зеленый.
+      $(".txt6").each(function () {
+        const $el3 = $(this);
+        $el3.css("color", "green").before($el3.clone().css("color", "red"));
+      });
+
+      //13 Найдите абзацы <p>, которые стоят непосредственно под <h2> и переместите каждый абзац так, чтобы он стал непосредственно над <h2>.
+      $(".title + .txt7").each(function () {
+        const $el4 = $(this);
+        $el4.prev().before($el4);
+      });
+
+      //14 Найдите все пустые абзацы <p> (без текста) и вставьте в них текст непосредственного соседа сверху.
+      $(".txt8:empty").each(function () {
+        const empty = $(this);
+        empty.text(empty.prev().text());
+      });
     </script>
   </body>
 </html>
