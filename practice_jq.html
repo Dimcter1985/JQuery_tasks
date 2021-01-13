@@ -102,6 +102,56 @@
       <p class="txt8"></p>
     </div>
 
+    15
+    <div class="parent2">
+      <p class="txt9"><b>some text</b></p>
+      <span><b>some text</b></span
+      ><br />
+      <span class="txt9"><b>some text</b></span>
+    </div>
+
+    16
+    <div class="parent2">
+      <h2 class="title3">some title</h2>
+      <p class="txt10">some text</p>
+      <p class="txt10"></p>
+      <p class="txt10"></p>
+    </div>
+
+    17
+    <div class="parent">
+      <input type="text" class="inp" value="2" />
+      <input type="text" class="inp" value="3" />
+      <input type="text" class="inp" value="4" />
+    </div>
+
+    18
+    <div class="parent">
+      <div class="txt11">previous text</div>
+      <div class="txt11 curr">current text</div>
+      <div class="txt11">next text</div>
+    </div>
+
+    19
+    <div class="parent">
+      <div class="txt12">some text</div>
+      <div class="txt12">previous text</div>
+      <div class="txt12">some text</div>
+      <div class="txt12 curr2">current text</div>
+      <div class="txt12">some text</div>
+      <div class="txt12">next text</div>
+      <div class="txt12">some text</div>
+    </div>
+
+    20
+    <div class="parent3">
+      <h2 class="title3">some title</h2>
+      <p class="txt13">come texr</p>
+      <p class="txt13">come texr</p>
+      <p class="txt13">come texr</p>
+      <h2 class="title3">some title</h2>
+    </div>
+
     <script>
       //1 Все абзацы <p>, внутри которых есть <b>, оберните в тег <div></div>
       $(".txt:has('b')").wrap("<div></div>");
@@ -166,6 +216,35 @@
         const empty = $(this);
         empty.text(empty.prev().text());
       });
+
+      //15 Родителю тега <b>, если это элемент с классом .www или абзац <p>, поставьте красный цвет и размер текста в 30px
+      $("b").parent("p, .txt9").css("color", "red");
+
+      //16  Всем пустым абзацам <p> поставьте текст ближайшего к ним сверху тега <h2>.
+      $(".txt10:empty").text($(".title3").text());
+
+      //17 Даны инпуты с числами. Сделайте так, чтобы в инпутах стали квадраты этих чисел. Показать подсказку.
+      $(".inp").each(function () {
+        let val = $(this).val();
+        $(this).val(Math.pow(val, 2));
+      });
+
+      //18 Дан элемент . Поставьте ему в начало текст непосредственного соседа сверху, а в конец - текст непосредственного соседа снизу.
+      const $curr = $(".curr");
+      $curr
+        .prepend(`${$curr.prev().text()} `)
+        .append(` ${$curr.next().text()}`);
+
+      //19 Дан элемент #test. Найдите его второго соседа сверху и его второго соседа снизу. Сделайте так, чтобы найденные элементы обменялись текстом (сосед сверху возьмет текст соседа снизу и наоборот).
+      const prev = $(".curr2").prevAll(".txt12:eq('1')");
+      const next = $(".curr2").nextAll(".txt12:eq('1')");
+      const prevTxt = prev.text();
+      const nextTxt = next.text();
+      prev.text(nextTxt);
+      next.text(prevTxt);
+
+      //20 Дан элемент <div>. Выберите из него всех непосредственных потомков, которые не являются заголовками и покрасьте их в красный цвет
+      $(".parent3 > *").not("h2").css("color", "red");
     </script>
   </body>
 </html>
