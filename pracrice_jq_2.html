@@ -146,6 +146,102 @@
     <div class="block"></div>
     <div class="block"></div>
 
+    51
+    <div class="parent9">
+      <p class="txt7">some text</p>
+    </div>
+
+    52
+    <div class="parent10">
+      <p class="txt8">some text</p>
+      <p class="txt8">some text</p>
+      <p class="txt8">some text</p>
+      <button class="btn">push</button>
+    </div>
+
+    53
+    <ul class="list6">
+      <li class="item6">item</li>
+      <li class="item6">item</li>
+      <li class="item6">item</li>
+      <li class="item6">item</li>
+      <li class="item6">item</li>
+    </ul>
+
+    54
+    <ul class="list7">
+      <li class="item7">item</li>
+      <li class="item7">item</li>
+      <li class="item7">item</li>
+      <li class="item7">item</li>
+      <li class="item7">item</li>
+      <li class="item7">item</li>
+      <li class="item7">item</li>
+    </ul>
+
+    55
+    <ul class="list8">
+      <li class="item8">item</li>
+      <li class="item8">item</li>
+      <li class="item8">item</li>
+      <li class="item8">item</li>
+      <li class="item8">item</li>
+      <li class="item8">item</li>
+      <li class="item8">item</li>
+    </ul>
+
+    56
+    <input type="checkbox" class="check" />
+    <input type="checkbox" class="check" checked />
+    <input type="checkbox" class="check" />
+    <input type="checkbox" class="check" checked /><br /><br />
+
+    57
+    <input type="checkbox" class="check2" />
+    <input type="checkbox" class="check2" />
+    <input type="checkbox" class="check2" />
+    <input type="checkbox" class="check2" />
+    <input type="checkbox" class="check2" /><br /><br />
+
+    58
+    <input type="checkbox" class="check3" />
+    <input type="checkbox" class="check3" checked />
+    <input type="checkbox" class="check3" />
+    <input type="checkbox" class="check3" checked /><br /><br />
+
+    59
+    <input type="text" class="inp" value="input" /><br /><br />
+
+    60
+    <a href="https://translate.yandex.ru/" class="link"></a><br /><br />
+
+    61
+    <input type="text" class="input1" /><br /><br />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" />
+    <input type="checkbox" class="check4" /><br /><br />
+
+    62
+    <select name="" id="" class="select">
+      <option value="">option</option>
+      <option value="">option</option>
+      <option value="">option</option>
+      <option value="">option</option>
+    </select>
+    <input type="radio" />
+    <input type="radio" />
+    <input type="radio" />
+    <input type="radio" />
+
     <style>
       .block {
         width: 100px;
@@ -253,6 +349,75 @@
         sum += height;
       });
       console.log(sum);
+
+      //51 Для элемента #test найдите ближайшего родителя с классом .www, в конец этого родителя добавьте абзац с текстом '!'.
+      $(".txt7").parent(".parent9").append("<p>!!!!!!</p>");
+
+      //52 По нажатию на элемент #test найдите его ближайшего родителя с классом .www, внутри этого родителя найдите все абзацы и покрасьте их в красный цвет.
+      $(".btn").on("click", function () {
+        $(this).parent(".parent10").find(".txt8").css("color", "red");
+      });
+
+      //53 Покрасьте первые 10 <li> на странице в красный цвет
+      $(".item6:lt('3')").css("color", "red");
+
+      //54 Покрасьте с 2-той по 5-ю <li> на странице в красный цвет.
+      $(".item7").slice(1, 5).css("color", "red");
+
+      //55 Найдите последние 10 <li> на странице, покрасьте их в красный цвет. Затем из найденных найдите четные <li> и оберните их внутри в тег <b>.
+      $(".item8")
+        .slice(-3)
+        .css("color", "red")
+        .filter(".item8:odd")
+        .wrapInner("<b></b>");
+
+      //56 На странице даны чекбоксы. Подсчитайте, сколько из них отмечены.
+      console.log($(".check:checked").length);
+
+      //57 Дано 5 чекбоксов. Сделайте так, чтобы после того, как пользователь отметил два из них, все чекбоксы заблокировались.
+      let $check = $(".check2");
+      $check.on("click", function () {
+        if ($(".check2:checked").length === 2) {
+          $check.prop("disabled", true);
+        }
+      });
+
+      //58 Сделайте так, чтобы все отмеченные чекбоксы сменили свое состояние на неотмеченное и наоборот.
+      $(".check3").each(function () {
+        $(this).prop("checked", !$(this).prop("checked"));
+      });
+
+      //59 Дан инпуты. Переместите содержимое атрибута value в атрибут placeholder, а сам атрибут value удалите совсем.
+      let $inp = $(".inp");
+      $inp.attr("plaseholder", $inp.val()).removeAttr("value");
+
+      //60 Дана ссылка. Если атрибут href начинается на http://, добавьте ссылке атрибут target="_blank".
+      $(".link[href^='https://']").attr("target", "_blank");
+
+      //61 Дан инпут, в который можно ввести число. Сделайте так, чтобы при вводе числа в этот инпут и потери фокуса на странице искался чекбокс с таким номером и становился отмеченным, а остальные чекбоксы становились неотмеченными.
+      let $inp2 = $(".input1");
+      $inp2.on("blur", function () {
+        $(".check4").each((ind, el) => {
+          if (+$inp2.val() === ind + 1) {
+            $(el).prop("checked", true);
+          }
+        });
+      });
+
+      //62 Дан селект и радио кнопочки, количество радио равно количеству пунктов в селекте. Сделайте так, чтобы при выборе пункта в селекте автоматически становилась отмеченной соответствующая радио кнопочка (соответствие по номеру следования: первый пункт списка - первому радио и так далее).
+      $(".select").on("click", function () {
+        $(this)
+          .children()
+          .each(function (i) {
+            let $option = $(this),
+              $inputAll = $('input[type="radio"]');
+            if ($option.prop("selected")) {
+              $inputAll.eq(i).prop("checked", true);
+            } else {
+              $inputAll.eq(i).prop("checked", false);
+            }
+          });
+      });
     </script>
   </body>
 </html>
