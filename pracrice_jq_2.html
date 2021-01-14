@@ -54,11 +54,105 @@
     </span>
 
     40
-    <div class="parent">
+    <div class="parent1">
       <ul class="list">
         <li class="item"></li>
       </ul>
     </div>
+
+    41
+    <div class="parent2">
+      <p class="txt5">first</p>
+      <p>second</p>
+      <p>second</p>
+      <p class="www1">second</p>
+      <p>second</p>
+    </div>
+
+    42
+    <div class="parent3">
+      <p>first</p>
+      <span>second</span>
+      <p>second</p>
+      <h4>second</h4>
+      <p class="txt6">second</p>
+    </div>
+
+    43
+    <div class="parent4">
+      <ul class="list1">
+        <li class="item1">item</li>
+        <li class="item1">item</li>
+        <li class="item1">curr item</li>
+        <li class="item1">item</li>
+      </ul>
+    </div>
+
+    44
+    <div class="parent5">
+      <ul class="list2">
+        <li class="item2">item</li>
+        <li class="item2">item</li>
+        <li class="item2">curr item</li>
+        <li class="item2">item</li>
+        <li class="item2">item</li>
+        <li class="item2">item</li>
+      </ul>
+    </div>
+
+    45
+    <div class="parent6">
+      <ol class="list3">
+        <li class="item3">one</li>
+        <li class="item3">two</li>
+        <li class="item3">three</li>
+      </ol>
+    </div>
+
+    46
+    <div class="parent6">
+      <h4>before</h4>
+      <h4>before</h4>
+      <p id="text">curr elem</p>
+      <h4>after</h4>
+      <h4>after</h4>
+    </div>
+
+    47
+    <div class="parent7">
+      <ul class="list4">
+        <li class="item4">item</li>
+        <li class="item4 active">item</li>
+        <li class="item4 active">curr item</li>
+        <li class="item4">item</li>
+        <li class="item4">item</li>
+        <li class="item4 active">item</li>
+      </ul>
+    </div>
+
+    48
+    <div class="parent8">
+      <ul class="list5">
+        <li class="item5">item</li>
+        <li class="item5">item</li>
+        <li class="item5">curr item</li>
+        <li class="item5">item</li>
+        <li class="item5">item</li>
+        <li class="item5">item</li>
+      </ul>
+    </div>
+
+    49
+    <div class="block"></div>
+    <div class="block"></div>
+
+    <style>
+      .block {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+      }
+    </style>
 
     <script>
       //33  Дан элемент . Поменяйте этот элемент местами с его непосредственным соседом снизу.
@@ -107,6 +201,58 @@
         });
 
       console.log(arr);
+
+      //41 Найдите все абзацы <p>, у которых есть атрибут class, и каждый из них оберните в <div> с теми же классами, как у найденного абзаца, а классы каждого абзаца удалите вместе с атрибутом class.
+      $("p[class]").attr("class", function (index, classes) {
+        $(this)
+          .removeAttr("class")
+          .wrap('<div class="' + classes + '">');
+      });
+
+      //42 Найдите все абзацы <p> из #test, поставьте им в конец текст '!', затем исключите из найденных абзацы с классом .www и оставшимся поставьте красный цвет.
+      $(".parent3")
+        .children("p")
+        .append("!!!")
+        .not(".txt6")
+        .css("color", "red");
+
+      //43 Найдите все <li> на странице, затем перед предпоследним из найденных вставьте еще один <li> с текстом 'пункт'.
+      $(".item1").last().prev().before("<li>new item</li>");
+
+      //44 Найдите все <li> на странице, затем выберите среди найденных второй, третий и четвертый с конца и поставьте им текст '!'.
+      $(".item2").slice(-4, -1).html("!!!");
+
+      //45  Найдите <ol> с #test и переставьте все <li> в нем в обратном порядке.
+      $(".list3").html($(".item3").get().reverse());
+
+      //46 Дан элемент #text. Найдите всех его соседей сверху и всех его соседей снизу и поменяйте их местами (то есть все, что стоит до элемента, должно стать после него и наоборот)
+      const $elem4 = $("#text");
+      const $prev = $elem4.prevAll();
+      const $next = $elem4.nextAll();
+      $elem4.after($prev).before($next);
+
+      //47 Получите все <li> с классом .www, сделайте им красный цвет, затем найдите среди найденных те <li>, у которых есть класс .bbb и удалите их. Решите все одной цепочкой.
+      $(".item4").css("color", "red").filter(".active").remove();
+
+      //48 Получите все <li> на странице. Четные из полученных сделайте пустыми, а нечетные удалите.
+      $(".item5:odd").empty();
+      $(".item5:even").remove();
+
+      //49 Найдите все теги <div> и удвойте им высоту
+      $(".block").each(function () {
+        let el = $(this);
+        let height = el.height();
+        el.height(height * 2);
+      });
+
+      //50 Найдите сумму высот всех <div> на странице.
+      let sum = 0;
+      $(".block").each(function () {
+        let el = $(this);
+        let height = el.height();
+        sum += height;
+      });
+      console.log(sum);
     </script>
   </body>
 </html>
